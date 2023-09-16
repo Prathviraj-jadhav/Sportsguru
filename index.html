@@ -13,6 +13,17 @@
     box-sizing: border-box;
   }
   
+  @property --rotate {
+  syntax: "<angle>";
+  initial-value: 132deg;
+  inherits: false;
+}
+
+:root {
+  --card-height: 65vh;
+  --card-width: calc(var(--card-height) / 1.5);
+}
+
   body {
     margin: 2%;
     padding: 2px;
@@ -21,6 +32,14 @@
     align-content: center;
     align-items: center;
     justify-content: center;
+    min-height: 100vh;
+  background: #212534;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  box-sizing: border-box;
   }
 
   div{
@@ -34,8 +53,8 @@
   }
 
   h1{
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-weight: 600;
+    padding-top: 0px;
+    font-weight: 400;
     color: aquamarine;
     align-content: center;
     margin-top: 20px;
@@ -52,22 +71,94 @@
   img{
     align-items: center;
     padding-bottom: 20px;
-    height:25%;
-    width: 98%;
+    border-radius: 50%;
+    height: 200px;
+    width: 200px;
   }
 
   h6{
     margin-bottom: 2px;
     padding-bottom: 1px;
+    color: aquamarine;
   }
+
+  .card {
+  background: #191c29;
+  width: var(--card-width);
+  height: var(--card-height);
+  padding: 3px;
+  position: relative;
+  border-radius: 6px;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  font-size: 1.5em;
+  color: rgb(88 199 250 / 0%);
+  cursor: pointer;
+  font-family: cursive;
+}
+
+.card:hover {
+  color: rgb(88 199 250 / 100%);
+  transition: color 1s;
+}
+.card:hover:before, .card:hover:after {
+  animation: none;
+  opacity: 0;
+}
+
+
+.card::before {
+  content: "";
+  width: 104%;
+  height: 102%;
+  border-radius: 8px;
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    position: absolute;
+    z-index: -1;
+    top: -1%;
+    left: -2%;
+    animation: spin 2.5s linear infinite;
+}
+
+.card::after {
+  position: absolute;
+  content: "";
+  top: calc(var(--card-height) / 6);
+  left: 0;
+  right: 0;
+  z-index: -1;
+  height: 100%;
+  width: 100%;
+  margin: 0 auto;
+  transform: scale(0.8);
+  filter: blur(calc(var(--card-height) / 6));
+  background-image: linear-gradient(
+    var(--rotate)
+    , #5ddcff, #3c67e3 43%, #4e00c2);
+    opacity: 1;
+  transition: opacity .5s;
+  animation: spin 2.5s linear infinite;
+}
+@keyframes spin {
+  0% {
+    --rotate: 0deg;
+  }
+  100% {
+    --rotate: 360deg;
+  }
+}
 </style>  
 </head>
 <body>
-    <div class="guru" align="center"><h1 align="center">I M TUDU</h1>
+    <div class="card" align="center"><h1 align="center">Cricket Fantasy Dreamer Girl</h1>
         <br>
-        <img src="./TUDU.jpg" alt="" srcset="">
+        <img src="./Riya.jpg" alt="" srcset="">
         <br>
-        <a href="https://telegram.me/+UmeG0H6SOTo5MWU1"><button type="button" class="btn btn-outline-light" id="btun" align="center">Join the Telegram Channel</button></a>
+        <a href="https://telegram.me/+-jRkGM8KC1lkNmU0"><button type="button" class="btn btn-outline-light" id="btun" align="center">Join the Telegram Channel</button></a>
         <br>
         <h2 align="center">It's all here</h2>
         <h6 align="center">Click on the Button and <br> Join your Favorite Telegram Channel</h3>
